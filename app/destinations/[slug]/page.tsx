@@ -1,7 +1,7 @@
 import { getDestinationBySlug, destinations } from "@/lib/data";
 import type { Destination } from "@/lib/data";
-import { notFound } from 'next/navigation';
-import React from 'react';
+import { notFound } from "next/navigation";
+import React from "react";
 import type { Metadata } from "next";
 import { DestinationClientPage } from "@/components/DestinationClientPage";
 
@@ -38,4 +38,4 @@ export default function DestinationPage({ params }: DestinationPageProps) {
 
   // Render the client component, passing the fetched data
   return <DestinationClientPage destination={destination} />;
-} 
+}

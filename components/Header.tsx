@@ -17,12 +17,14 @@ import {
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-3 px-4 md:px-6 shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 px-4 py-3 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-background/60 md:px-6">
       <div className="container flex h-14 max-w-screen-2xl items-center justify-between">
         {/* Site Title/Logo */}
         <Link href="/" className="mr-6 flex items-center space-x-2">
           {/* Replace with an SVG logo maybe? */}
-          <span className="font-bold inline-block text-primary">Urlaubsziele</span>
+          <span className="inline-block font-bold text-primary">
+            Urlaubsziele
+          </span>
         </Link>
 
         {/* Navigation Menu */}
@@ -65,8 +67,8 @@ export function Header() {
               </Link>
             </NavigationMenuItem>
 
-             {/* Add more top-level links here if needed */}
-             {/* Example:
+            {/* Add more top-level links here if needed */}
+            {/* Example:
              <NavigationMenuItem>
               <Link href="/about" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -75,12 +77,10 @@ export function Header() {
               </Link>
             </NavigationMenuItem>
             */}
-
           </NavigationMenuList>
         </NavigationMenu>
 
-         {/* Maybe add other elements like Theme Toggle or User Profile here */}
-
+        {/* Maybe add other elements like Theme Toggle or User Profile here */}
       </div>
     </header>
   );
@@ -102,7 +102,9 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none text-primary">{title}</div>
+          <div className="text-sm font-medium leading-none text-primary">
+            {title}
+          </div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
@@ -111,4 +113,4 @@ const ListItem = React.forwardRef<
     </li>
   );
 });
-ListItem.displayName = "ListItem"; 
+ListItem.displayName = "ListItem";

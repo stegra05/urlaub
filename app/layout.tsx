@@ -21,7 +21,8 @@ const quicksand = Quicksand({
 
 export const metadata: Metadata = {
   title: "Europäische Strandziele",
-  description: "Entdecken Sie die schönsten Strandziele in Europa im Ghibli-Stil",
+  description:
+    "Entdecken Sie die schönsten Strandziele in Europa im Ghibli-Stil",
 };
 
 export default function RootLayout({
@@ -37,13 +38,13 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       {/* Weise Nunito als Hauptschriftart dem Body zu */}
-      <body className={`font-sans ${nunito.className}`}> 
+      <body className={`font-sans ${nunito.className}`}>
         <Header />
-        <div className="flex flex-col min-h-screen">
+        <div className="flex min-h-screen flex-col">
           <main className="flex-grow py-8">{children}</main>
         </div>
         <Footer />
       </body>
     </html>
   );
-} 
+}

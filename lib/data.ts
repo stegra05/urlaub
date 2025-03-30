@@ -69,6 +69,12 @@ export interface Destination {
      */
     accommodation: string;
   };
+
+  /**
+   * Optional URL for the destination's representative image.
+   * Example: "https://picsum.photos/500/281?random=1"
+   */
+  imageUrl?: string;
 }
 
 /**
@@ -91,6 +97,7 @@ export const destinations: Destination[] = [
       flights: "Günstig bis Mittel",
       accommodation: "Vielfältig, von Hostels bis Luxushotels",
     },
+    imageUrl: "https://picsum.photos/500/281?random=1",
   },
   {
     slug: "malaga",
@@ -107,6 +114,7 @@ export const destinations: Destination[] = [
       flights: "Günstig bis Mittel",
       accommodation: "Gute Auswahl in allen Preisklassen",
     },
+    imageUrl: "https://picsum.photos/500/281?random=2",
   },
   {
     slug: "palermo",
@@ -123,6 +131,7 @@ export const destinations: Destination[] = [
       flights: "Mittel",
       accommodation: "Eher günstig bis mittelpreisig",
     },
+    imageUrl: "https://picsum.photos/500/281?random=3",
   },
   {
     slug: "nice",
@@ -133,12 +142,14 @@ export const destinations: Destination[] = [
       accessibility: "Stadtstrand sehr gut erreichbar, andere per Bus/Zug",
     },
     transport: "Gutes Bus-/Tramnetz, Zug entlang der Küste",
-    culture: "Altstadt (Vieux Nice), Matisse Museum, Chagall Museum, russisch-orthodoxe Kathedrale",
+    culture:
+      "Altstadt (Vieux Nice), Matisse Museum, Chagall Museum, russisch-orthodoxe Kathedrale",
     activities: "Promenade, Märkte, Ausflüge (Monaco, Cannes), Kunst",
     costs: {
       flights: "Mittel bis Hoch",
       accommodation: "Eher gehobenes Preisniveau",
     },
+    imageUrl: "https://picsum.photos/500/281?random=4",
   },
 ];
 
@@ -149,4 +160,4 @@ export const destinations: Destination[] = [
  */
 export function getDestinationBySlug(slug: string): Destination | undefined {
   return destinations.find((destination) => destination.slug === slug);
-} 
+}

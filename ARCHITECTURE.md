@@ -2,12 +2,12 @@ Projektarchitektur: Europäische Strandziele Showcase
 Dieses Dokument beschreibt detailliert die Architektur und die zugrundeliegenden Designentscheidungen für die Website "Europäische Strandziele Showcase". Ziel ist es, ein klares Verständnis der technischen Struktur und der gewählten Ansätze zu vermitteln.
 
 1. Übersicht
-Das Kernziel dieses Projekts ist die Schaffung einer informativen und ästhetisch ansprechenden Website, die europäische Stranddestinationen basierend auf klar definierten Kriterien (Flugzeit, Strandqualität, ÖPNV etc.) präsentiert. Ein besonderes Merkmal ist das einzigartige, von Studio Ghibli inspirierte Design, das eine warme, fast nostalgische Atmosphäre erzeugen soll. Um dies zu erreichen, wird auf moderne Webtechnologien gesetzt, die sowohl eine hohe Performance als auch eine gute Wartbarkeit gewährleisten.
+   Das Kernziel dieses Projekts ist die Schaffung einer informativen und ästhetisch ansprechenden Website, die europäische Stranddestinationen basierend auf klar definierten Kriterien (Flugzeit, Strandqualität, ÖPNV etc.) präsentiert. Ein besonderes Merkmal ist das einzigartige, von Studio Ghibli inspirierte Design, das eine warme, fast nostalgische Atmosphäre erzeugen soll. Um dies zu erreichen, wird auf moderne Webtechnologien gesetzt, die sowohl eine hohe Performance als auch eine gute Wartbarkeit gewährleisten.
 
 Kerntechnologien: Next.js (App Router), TypeScript, Tailwind CSS, Shadcn UI. Diese Kombination wurde gewählt, da sie sich hervorragend für inhaltsorientierte Websites eignet, eine schnelle Entwicklung ermöglicht und gleichzeitig eine robuste Basis für zukünftige Erweiterungen bietet.
 
 2. Verzeichnisstruktur
-Die gewählte Verzeichnisstruktur folgt den Konventionen von Next.js und bewährten Praktiken für die Organisation von Webprojekten:
+   Die gewählte Verzeichnisstruktur folgt den Konventionen von Next.js und bewährten Praktiken für die Organisation von Webprojekten:
 
 /app: Das Herzstück der Anwendung gemäß dem Next.js App Router-Modell. Es enthält alle Routen, Layouts und Seitenlogiken.
 
@@ -34,10 +34,10 @@ globals.css: Die zentrale CSS-Datei für globale Stile. Sie beinhaltet die Tailw
 tailwind.config.js: Die Konfigurationsdatei für Tailwind CSS. Hier wird das Standard-Theme von Tailwind erweitert, insbesondere um die spezifische Ghibli-Farbpalette und die ausgewählten Schriftarten zu integrieren.
 
 3. Routing
-Das Routing wird vollständig und deklarativ durch den Next.js App Router gehandhabt. Die URL-Pfade entsprechen direkt der Ordnerstruktur innerhalb des /app-Verzeichnisses. Dieses dateibasierte Routing vereinfacht die Organisation und das Verständnis der Anwendungsstruktur. Die Detailseiten der Destinationen (/destinations/[slug]) werden als dynamische Routen implementiert, aber dank generateStaticParams zur Build-Zeit als statische Seiten (Static Site Generation - SSG) generiert. Dies führt zu exzellenter Performance und verbessert die Suchmaschinenoptimierung (SEO), da die Inhalte direkt im HTML verfügbar sind.
+   Das Routing wird vollständig und deklarativ durch den Next.js App Router gehandhabt. Die URL-Pfade entsprechen direkt der Ordnerstruktur innerhalb des /app-Verzeichnisses. Dieses dateibasierte Routing vereinfacht die Organisation und das Verständnis der Anwendungsstruktur. Die Detailseiten der Destinationen (/destinations/[slug]) werden als dynamische Routen implementiert, aber dank generateStaticParams zur Build-Zeit als statische Seiten (Static Site Generation - SSG) generiert. Dies führt zu exzellenter Performance und verbessert die Suchmaschinenoptimierung (SEO), da die Inhalte direkt im HTML verfügbar sind.
 
 4. Komponentenstrategie
-Die Komponentenarchitektur basiert auf Wiederverwendbarkeit und klarer Trennung der Verantwortlichkeiten:
+   Die Komponentenarchitektur basiert auf Wiederverwendbarkeit und klarer Trennung der Verantwortlichkeiten:
 
 UI-Primitive: Die Verwendung von Shadcn UI als Basis für UI-Elemente bietet mehrere Vorteile: Die Komponenten sind standardmäßig barrierefrei (Accessibility), folgen Design-Best-Practices und können über Tailwind CSS und CSS-Variablen umfassend an das Ghibli-Design angepasst werden. Da der Code der Komponenten direkt im Projekt liegt, ist maximale Kontrolle und Anpassbarkeit gegeben.
 
@@ -48,7 +48,7 @@ Feature-Komponenten: Diese Komponenten kapseln spezifische Funktionalitäten ode
 Komposition: Dem Prinzip "Composition over Inheritance" folgend, werden komplexe UIs durch das Zusammensetzen kleinerer, fokussierter Komponenten erstellt. Dies fördert die Wiederverwendbarkeit, erleichtert Tests und macht den Code flexibler und verständlicher.
 
 5. Styling (Ghibli Aesthetic)
-Die Umsetzung des Ghibli-inspirierten Designs erfolgt durch eine Kombination verschiedener Techniken, die auf Tailwind CSS aufbauen:
+   Die Umsetzung des Ghibli-inspirierten Designs erfolgt durch eine Kombination verschiedener Techniken, die auf Tailwind CSS aufbauen:
 
 Basis: Tailwind CSS liefert die Grundlage mit seinem Utility-First-Ansatz, der schnelles und direktes Styling im Markup ermöglicht.
 
@@ -69,23 +69,23 @@ Cursor: Ein kleiner, thematisch passender benutzerdefinierter Cursor als verspie
 Konsistenz: Um ein einheitliches Erscheinungsbild sicherzustellen, werden Styles bevorzugt über Tailwind-Utility-Klassen und die konfigurierten Varianten der Shadcn-Komponenten angewendet. Globale Styles werden nur sparsam für Basiselemente oder übergreifende Regeln eingesetzt.
 
 6. Datenhaltung
-Die Daten der Reiseziele (Informationen zu Stränden, Kosten, Kultur etc.) werden bewusst statisch gehalten und direkt in der Codebasis (lib/data.ts) als TypeScript-Objekte/-Arrays verwaltet.
+   Die Daten der Reiseziele (Informationen zu Stränden, Kosten, Kultur etc.) werden bewusst statisch gehalten und direkt in der Codebasis (lib/data.ts) als TypeScript-Objekte/-Arrays verwaltet.
 
 Vorteile: Dieser Ansatz ist für den aktuellen Umfang ideal, da er die Datenbeschaffung extrem vereinfacht (keine Datenbank oder externe API nötig) und die Nutzung von Next.js' Static Site Generation (SSG) optimal unterstützt. Dies führt zu sehr schnellen Ladezeiten und reduziert die Komplexität der Infrastruktur.
 
 Nachteile/Erweiterung: Der Nachteil ist, dass Änderungen an den Daten einen neuen Build- und Deployment-Prozess erfordern. Sollte die Anwendung in Zukunft komplexere Anforderungen haben (z.B. Benutzer-Logins, dynamischere Daten, häufige Updates), müsste dieser Ansatz durch die Anbindung einer Datenbank oder eines Headless CMS erweitert werden, wobei Next.js auch hierfür flexible Möglichkeiten (Server Components, API Routes) bietet.
 
 7. State Management
-Für den aktuellen Funktionsumfang der Website ist kein komplexes globales State Management erforderlich. Die Verwaltung des Zustands erfolgt primär lokal innerhalb der Komponenten oder durch einfache Weitergabe über Props.
+   Für den aktuellen Funktionsumfang der Website ist kein komplexes globales State Management erforderlich. Die Verwaltung des Zustands erfolgt primär lokal innerhalb der Komponenten oder durch einfache Weitergabe über Props.
 
 Ansatz: Es wird auf Reacts eingebaute Hooks (useState, useEffect) gesetzt. Für selten benötigten, globaleren State, der über wenige Ebenen geteilt werden muss (z.B. Theme-Einstellungen, falls dynamisch änderbar), könnte useContext verwendet werden.
 
 Begründung: Die Einführung externer Bibliotheken wie Redux oder Zustand würde unnötige Komplexität hinzufügen. Der gewählte Ansatz hält die Architektur schlank und fokussiert.
 
 8. Entwicklung mit Cursor.ai
-Die Verwendung von Cursor.ai als Entwicklungsumgebung hat den Prozess unterstützt, insbesondere bei der schnellen Generierung von Boilerplate-Code, der Implementierung von Komponenten nach vorgegebenen Mustern und der Refaktorierung. Das .cursorrules-File dient dabei als Leitfaden für die AI, um Konsistenz im Code-Stil, der Architektur und der Verwendung der festgelegten Technologien sicherzustellen.
+   Die Verwendung von Cursor.ai als Entwicklungsumgebung hat den Prozess unterstützt, insbesondere bei der schnellen Generierung von Boilerplate-Code, der Implementierung von Komponenten nach vorgegebenen Mustern und der Refaktorierung. Das .cursorrules-File dient dabei als Leitfaden für die AI, um Konsistenz im Code-Stil, der Architektur und der Verwendung der festgelegten Technologien sicherzustellen.
 
 9. Deployment
-Die empfohlene Plattform für das Deployment dieser Next.js-Anwendung ist Vercel.
+   Die empfohlene Plattform für das Deployment dieser Next.js-Anwendung ist Vercel.
 
 Gründe: Vercel ist der Entwickler von Next.js und bietet eine nahtlose Integration. Features wie automatische Deployments bei Git-Pushes, Optimierung für SSG und ISR, ein globales CDN und einfache Konfiguration machen es zur idealen Wahl für Projekte dieser Art. Die Bereitstellung ist oft mit wenigen Klicks erledigt.

@@ -37,29 +37,29 @@ Deployment (Vorschlag): Vercel - Die ideale Hosting-Plattform für Next.js-Anwen
 
 🏗️ Projektstruktur (Auszug)
 .
-├── app/                  # Next.js App Router: Enthält alle Routen, Seiten und Layouts.
-│   ├── layout.tsx        # Globales Hauptlayout der Anwendung.
-│   ├── page.tsx          # Code für die Startseite (Homepage).
-│   └── destinations/
-│       └── [slug]/
-│           └── page.tsx  # Dynamische Route für die Detailansicht jeder Destination.
-├── components/           # Sammlung wiederverwendbarer React-Komponenten.
-│   ├── ui/               # Von Shadcn UI bereitgestellte und angepasste UI-Primitive.
-│   └── ...               # Eigene Komponenten (Header, Footer, CityCard etc.).
-├── lib/                  # Hilfsfunktionen, Typdefinitionen und Datenlogik.
-│   └── data.ts           # Enthält die statischen Daten der Reiseziele und Zugriffsfunktionen.
-├── public/               # Ordner für statische Assets, die direkt ausgeliefert werden.
-│   ├── images/           # Projektbilder (optional).
-│   └── cursors/
-│       └── ghibli-cursor.png # Beispiel für den benutzerdefinierten Cursor.
-├── styles/               # Zusätzliche globale Stylesheets (falls benötigt).
-├── globals.css           # Zentrale Datei für globale CSS-Regeln, Tailwind Basis-Layer und CSS-Variablen für das Theme.
-├── tailwind.config.js    # Konfigurationsdatei für Tailwind CSS (Theme-Anpassungen, Plugins).
-├── next.config.mjs       # Konfigurationsdatei für Next.js.
-├── tsconfig.json         # Konfigurationsdatei für den TypeScript-Compiler.
-├── .cursorrules          # Spezifische Anweisungen für die Cursor.ai Entwicklungsumgebung.
-├── README.md             # Diese detaillierte Projektbeschreibung.
-└── ARCHITECTURE.md       # Dokumentation der technischen Architektur und Designentscheidungen.
+├── app/ # Next.js App Router: Enthält alle Routen, Seiten und Layouts.
+│ ├── layout.tsx # Globales Hauptlayout der Anwendung.
+│ ├── page.tsx # Code für die Startseite (Homepage).
+│ └── destinations/
+│ └── [slug]/
+│ └── page.tsx # Dynamische Route für die Detailansicht jeder Destination.
+├── components/ # Sammlung wiederverwendbarer React-Komponenten.
+│ ├── ui/ # Von Shadcn UI bereitgestellte und angepasste UI-Primitive.
+│ └── ... # Eigene Komponenten (Header, Footer, CityCard etc.).
+├── lib/ # Hilfsfunktionen, Typdefinitionen und Datenlogik.
+│ └── data.ts # Enthält die statischen Daten der Reiseziele und Zugriffsfunktionen.
+├── public/ # Ordner für statische Assets, die direkt ausgeliefert werden.
+│ ├── images/ # Projektbilder (optional).
+│ └── cursors/
+│ └── ghibli-cursor.png # Beispiel für den benutzerdefinierten Cursor.
+├── styles/ # Zusätzliche globale Stylesheets (falls benötigt).
+├── globals.css # Zentrale Datei für globale CSS-Regeln, Tailwind Basis-Layer und CSS-Variablen für das Theme.
+├── tailwind.config.js # Konfigurationsdatei für Tailwind CSS (Theme-Anpassungen, Plugins).
+├── next.config.mjs # Konfigurationsdatei für Next.js.
+├── tsconfig.json # Konfigurationsdatei für den TypeScript-Compiler.
+├── .cursorrules # Spezifische Anweisungen für die Cursor.ai Entwicklungsumgebung.
+├── README.md # Diese detaillierte Projektbeschreibung.
+└── ARCHITECTURE.md # Dokumentation der technischen Architektur und Designentscheidungen.
 
 🚀 Getting Started
 Stellen Sie sicher, dass Sie eine aktuelle LTS-Version von Node.js installiert haben (z.B. v18 oder v20).
@@ -73,9 +73,13 @@ Abhängigkeiten installieren:
 Wählen Sie einen Paketmanager Ihrer Wahl:
 
 npm install
+
 # oder
+
 yarn install
+
 # oder
+
 pnpm install
 
 (Optional) Umgebungsvariablen:
@@ -85,9 +89,13 @@ Erstellen Sie eine .env.local Datei im Stammverzeichnis, falls spezifische Umgeb
 Führen Sie den folgenden Befehl aus, um den lokalen Entwicklungsserver zu starten. Dieser beobachtet Änderungen an den Dateien und lädt die Anwendung automatisch neu.
 
 npm run dev
+
 # oder
+
 yarn dev
+
 # oder
+
 pnpm dev
 
 Öffnen Sie anschließend http://localhost:3000 (oder den im Terminal angezeigten Port) in Ihrem bevorzugten Webbrowser.
@@ -96,9 +104,13 @@ pnpm dev
 Um die Codequalität sicherzustellen und einen konsistenten Stil zu gewährleisten, können Sie die konfigurierten Linting-Tools ausführen:
 
 npm run lint
+
 # oder
+
 yarn lint
+
 # oder
+
 pnpm lint
 
 Dies hilft dabei, potenzielle Fehler frühzeitig zu erkennen und die Lesbarkeit des Codes zu verbessern. Es wird empfohlen, zusätzlich einen Formatter wie Prettier zu integrieren und diesen bei jedem Speichern automatisch ausführen zu lassen.
