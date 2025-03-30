@@ -81,6 +81,7 @@
 
     @apply bg-background text-foreground transition-colors duration-300;
     background-image:
+      url('/images/ghibli-texture.png'),
       radial-gradient(
         circle at top right,
         hsl(168 42% 85% / 0.2),
