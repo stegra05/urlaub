@@ -40,7 +40,7 @@ export default function RootLayout({
       <body className={`font-sans ${nunito.className}`}> 
         <Header />
         <div className="flex flex-col min-h-screen">
-          <main className="flex-grow">{children}</main>
+          <main className="flex-grow py-8">{children}</main>
         </div>
         <Footer />
       </body>

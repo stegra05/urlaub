@@ -56,6 +56,15 @@ export function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
 
+            {/* Empfehlungen Link */}
+            <NavigationMenuItem>
+              <Link href="/empfehlungen" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Empfehlungen
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+
              {/* Add more top-level links here if needed */}
              {/* Example:
              <NavigationMenuItem>

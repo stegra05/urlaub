@@ -14,10 +14,16 @@ export function Footer() {
 
         {/* Footer Links */}
         <div className="flex space-x-4">
-          <Link href="#" className="hover:text-primary transition-colors">
+          <Link 
+            href="#" 
+            className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:rounded-sm"
+          >
             Impressum
           </Link>
-          <Link href="#" className="hover:text-primary transition-colors">
+          <Link 
+            href="#" 
+            className="hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:rounded-sm"
+          >
             Datenschutz
           </Link>
         </div>
