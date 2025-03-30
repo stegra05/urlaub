@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Ghibli-inspirierte Farbpalette */
+    --background: 45 30% 98%;     /* Sanftes Creme #fcfaf6 */
+    --foreground: 197 30% 25%;    /* Mattes Blaugrau #2d5a70 */
+
+    --card: 45 25% 96%;           /* Leichtes Sandbeige #f8f5ed */
+    --card-foreground: 197 30% 25%;
+
+    --popover: 45 30% 98%;
+    --popover-foreground: 197 30% 25%;
+
+    --primary: 24 56% 65%;        /* Warmes Terrakotta #e6a277 */
+    --primary-foreground: 45 30% 98%;
+
+    --secondary: 168 42% 75%;     /* Teal/Türkis #8adbce */
+    --secondary-foreground: 197 40% 18%;
+
+    --muted: 45 20% 90%;          /* Helles Beige #ebe6da */
+    --muted-foreground: 197 15% 40%;
+
+    --accent: 355 65% 80%;        /* Sanftes Rosa #f599a3 */
+    --accent-foreground: 197 40% 18%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 45 30% 98%;
+
+    --border: 45 15% 85%;         /* Helles Sandgrau #dbd4c5 */
+    --input: 45 15% 85%;
+    --ring: 24 56% 65%;           /* Gleich wie Primary */
+
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 197 40% 15%;    /* Dunkles Blaugrau #183141 */
+    --foreground: 45 20% 92%;     /* Helles Beige #eee9dd */
+
+    --card: 197 35% 18%;          /* Leicht helleres Blaugrau #1e3a4e */
+    --card-foreground: 45 20% 92%;
+
+    --popover: 197 40% 15%;
+    --popover-foreground: 45 20% 92%;
+
+    --primary: 24 56% 65%;        /* Gleiches Terrakotta wie im Light-Mode */
+    --primary-foreground: 197 40% 15%;
+
+    --secondary: 168 42% 65%;     /* Gedämpftes Teal #70c7b8 */
+    --secondary-foreground: 45 20% 92%;
+
+    --muted: 197 30% 25%;         /* Mittleres Blaugrau #2d5a70 */
+    --muted-foreground: 45 10% 80%;
+
+    --accent: 355 65% 70%;        /* Dunkleres Rosa #f1737f */
+    --accent-foreground: 45 20% 92%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 45 20% 92%;
+
+    --border: 197 25% 30%;        /* Dunkles Blaugrau #355c72 */
+    --input: 197 25% 30%;
+    --ring: 24 56% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    /* Ghibli Sparkle Cursor: Ein einfacher 4-zackiger Stern/Funke in Teal */
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='%238adbce'%3E%3Cpath d='M12 0L13.65 8.35L22 10L15.3 15.3L17.6 24L12 19.5L6.4 24L8.7 15.3L2 10L10.35 8.35L12 0Z'/%3E%3C/svg%3E") 12 12, auto;
+    
+    @apply bg-background text-foreground transition-colors duration-300;
+    background-image: 
+      radial-gradient(
+        circle at top right,
+        hsl(168 42% 85% / 0.2), 
+        transparent 30%
+      ),
+      radial-gradient(
+        circle at bottom left,
+        hsl(24 56% 75% / 0.15), 
+        transparent 25%
+      );
+    background-attachment: fixed;
+  }
+
+  /* Standard-Pointer für interaktive Elemente */
+  a, button, [role="button"], input[type="submit"], input[type="button"], label[for] {
+    cursor: pointer;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium text-foreground;
+  }
+  
+  /* Sanfte Hover-Effekte für interaktive Elemente */
+  button, a {
+    @apply transition-all duration-300;
+  }
+  
+  /* Anpassungen für benutzerdefinierte Scrollbar im Ghibli-Stil */
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/50 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/70 rounded-full hover:bg-primary/90;
+  }
+} 
