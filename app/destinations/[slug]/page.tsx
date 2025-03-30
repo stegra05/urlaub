@@ -20,10 +20,35 @@ interface DestinationPageProps {
 }
 
 export function generateMetadata({ params }: DestinationPageProps): Metadata {
-  // In einer realen Anwendung würden wir hier die Daten aus einer API oder Datendatei abrufen
+  // Die Destination-Daten innerhalb der Funktion abrufen
+  const destination = getDestinationBySlug(params.slug);
+  
+  // Fallback-Werte, falls keine Destination gefunden wird
+  if (!destination) {
+    return {
+      title: "Destination nicht gefunden - Europäische Strandziele",
+      description: "Die gesuchte Stranddestination konnte nicht gefunden werden.",
+    };
+  }
+  
+  // Spezifische Metadaten basierend auf den Destination-Daten
   return {
-    title: `${params.slug} - Europäische Strandziele`,
-    description: `Entdecken Sie alles über ${params.slug} als Urlaubsziel`,
+    title: `${destination.name} - Europäische Strandziele`,
+    description: `Entdecken Sie ${destination.name} mit ${destination.beach.quality} und erleben Sie die lokale Kultur: ${destination.culture}`,
+    openGraph: {
+      title: `${destination.name} - Europäische Strandziele`,
+      description: `Entdecken Sie ${destination.name} mit ${destination.beach.quality}. Flugzeit: ${destination.flightTime}`,
+      type: "website",
+      url: `https://europaeische-strandziele.de/destinations/${destination.slug}`,
+      images: [
+        {
+          url: destination.imageUrl || "https://europaeische-strandziele.de/images/og-image.jpg",
+          width: 500,
+          height: 281,
+          alt: `Bild von ${destination.name}`,
+        },
+      ],
+    },
   };
 }
 

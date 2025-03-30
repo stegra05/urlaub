@@ -36,6 +36,11 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="og:title" content="Europäische Strandziele" />
+        <meta property="og:description" content="Entdecken Sie die schönsten Strandziele in Europa im Ghibli-Stil" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://europaeische-strandziele.de" />
+        <meta property="og:image" content="https://europaeische-strandziele.de/images/og-image.jpg" />
       </head>
       {/* Weise Nunito als Hauptschriftart dem Body zu */}
       <body className={`font-sans ${nunito.className}`}>

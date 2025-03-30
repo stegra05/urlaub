@@ -13,13 +13,13 @@ export function Footer() {
         {/* Footer Links */}
         <div className="flex space-x-4">
           <Link
-            href="#"
+            href="/impressum"
             className="transition-colors hover:text-primary focus:rounded-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
           >
             Impressum
           </Link>
           <Link
-            href="#"
+            href="/datenschutz"
             className="transition-colors hover:text-primary focus:rounded-sm focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
           >
             Datenschutz
