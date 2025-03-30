@@ -5,6 +5,13 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 
+// Generate static paths for each destination
+export async function generateStaticParams() {
+  return destinations.map((destination) => ({
+    slug: destination.slug,
+  }));
+}
+
 // Define props type including params
 interface DestinationPageProps {
   params: {
@@ -48,28 +55,44 @@ export default function DestinationPage({ params }: DestinationPageProps) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="md:col-span-2 space-y-6">
+            {/* == Strandqualität & Erreichbarkeit == */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Beschreibung</h2>
-              <p className="text-foreground/80">
-                Detaillierte Beschreibung von {destination.name} mit Informationen über die Strände, 
-                Aktivitäten und besondere Attraktionen.
-              </p>
+              <h2 className="text-2xl font-semibold mb-4 text-secondary">Strandqualität & Erreichbarkeit</h2>
+              <div className="space-y-2 text-foreground/80">
+                <p><strong>Qualität:</strong> {destination.beach.quality}</p>
+                <p><strong>Erreichbarkeit:</strong> {destination.beach.accessibility}</p>
+              </div>
             </section>
 
-            <section>
-              <h2 className="text-2xl font-semibold mb-4">Highlights</h2>
-              <ul className="list-disc list-inside space-y-2 text-foreground/80">
-                <li>Kristallklares Wasser und traumhafte Strände</li>
-                <li>Historische Altstadt zum Erkunden</li>
-                <li>Ausgezeichnete lokale Küche</li>
-                <li>Vielseitige Freizeitmöglichkeiten</li>
-              </ul>
-            </section>
+            {/* == Öffentliche Verkehrsmittel == */}
+            {destination.transport && (
+              <section>
+                <h2 className="text-2xl font-semibold mb-4 text-secondary">Öffentliche Verkehrsmittel</h2>
+                <p className="text-foreground/80">{destination.transport}</p>
+              </section>
+            )}
+
+            {/* == Kulturelle Highlights == */}
+            {destination.culture && (
+              <section>
+                <h2 className="text-2xl font-semibold mb-4 text-secondary">Kulturelle Highlights</h2>
+                 <p className="text-foreground/80">{destination.culture}</p>
+              </section>
+            )}
+
+            {/* == Freizeitaktivitäten == */}
+            {destination.activities && (
+              <section>
+                <h2 className="text-2xl font-semibold mb-4 text-secondary">Freizeitaktivitäten</h2>
+                 <p className="text-foreground/80">{destination.activities}</p>
+              </section>
+            )}
           </div>
 
           <div className="space-y-6 bg-card p-6 rounded-lg shadow-sm">
+            {/* == Praktische Infos & Kosten == */}
             <section>
-              <h2 className="text-xl font-semibold mb-3">Praktische Infos</h2>
+              <h2 className="text-xl font-semibold mb-3 text-secondary">Praktische Infos & Kosten</h2>
               <div className="space-y-3 text-sm">
                 <div>
                   <span className="font-medium">Beste Reisezeit:</span>
@@ -77,7 +100,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
                 </div>
                 <div>
                   <span className="font-medium">Anreise:</span>
-                  <p className="text-foreground/80">Flug ab München: ca. 2,5 Stunden</p>
+                  <p className="text-foreground/80">{destination.flightTime}</p>
                 </div>
                 <div>
                   <span className="font-medium">Sprache:</span>
@@ -87,6 +110,25 @@ export default function DestinationPage({ params }: DestinationPageProps) {
                   <span className="font-medium">Währung:</span>
                   <p className="text-foreground/80">Euro</p>
                 </div>
+
+                {/* Geschätzte Kosten */}
+                {destination.costs && (
+                  <>
+                    <div className="pt-3 mt-3 border-t border-border">
+                       <h3 className="text-base font-semibold mb-2 text-secondary">Geschätzte Kosten</h3>
+                       <div className="space-y-1">
+                         <div>
+                           <span className="font-medium">Flüge:</span>
+                           <p className="text-foreground/80">{destination.costs.flights}</p>
+                         </div>
+                         <div>
+                           <span className="font-medium">Unterkunft:</span>
+                           <p className="text-foreground/80">{destination.costs.accommodation}</p>
+                         </div>
+                       </div>
+                    </div>
+                  </>
+                )}
               </div>
             </section>
 
