@@ -1,53 +1,85 @@
+import React from 'react';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+// Import the actual destinations data
+import { destinations } from '@/lib/data';
+// Import Shadcn Card components
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-// Beispielhafte Reiseziele, später könnten diese aus einer Datenquelle geladen werden
-const destinations = [
-  { id: 1, slug: "sardinien", name: "Sardinien" },
-  { id: 2, slug: "korsika", name: "Korsika" },
-  { id: 3, slug: "mallorca", name: "Mallorca" },
-];
+// // Beispielhafte Reiseziele, später könnten diese aus einer Datenquelle geladen werden
+// const destinations = [
+//   { id: 1, slug: "sardinien", name: "Sardinien" },
+//   { id: 2, slug: "korsika", name: "Korsika" },
+//   { id: 3, slug: "mallorca", name: "Mallorca" },
+// ];
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-6 md:p-24">
-      <div className="max-w-5xl w-full">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      {/* Hero Section */}
+      <section className="relative w-full max-w-4xl text-center py-20">
+        {/* Placeholder for Ghibli-inspired background */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-b from-blue-100 via-emerald-50 to-background rounded-lg opacity-50"></div>
+
+        <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-6xl mb-6">
+          Europäische Traumstrände: Ihr Urlaubsguide
+        </h1>
+        <p className="mt-4 text-lg leading-8 text-muted-foreground">
+          Entdecken Sie handverlesene Reiseziele am Meer, inspiriert von der Magie der Ghibli-Filme. Finden Sie Ihren perfekten Strandurlaub.
+        </p>
+        {/* Optional: Call to action button can be added later */}
+      </section>
+
+      {/* Destinations Grid Section */}
+      <section className="w-full max-w-5xl py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold mb-6">Europäische Strandziele</h1>
-          <p className="text-lg text-center mb-8">
-            Entdecken Sie die schönsten Strände Europas im Ghibli-Stil
-          </p>
+          {/* Updated Heading */}
+          <h2 className="text-3xl font-bold tracking-tight text-primary sm:text-4xl mb-4">
+            Top-Empfehlungen für Ihren Strandurlaub
+          </h2>
+          {/* Removed paragraph */}
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {destinations.map((destination) => (
-            <Link 
-              href={`/destinations/${destination.slug}`} 
-              key={destination.id}
-              className="block"
-            >
-              <div className="bg-card rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="h-40 bg-muted flex items-center justify-center">
-                  <span className="text-muted-foreground">Bild von {destination.name}</span>
+
+        {/* Responsive Grid - showing first 4 destinations */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          {destinations.slice(0, 4).map((destination) => (
+            <Card key={destination.slug} className="flex flex-col justify-between">
+              <CardHeader>
+                <CardTitle>{destination.name}</CardTitle>
+                {/* Optional: CardDescription could go here */}
+              </CardHeader>
+              <CardContent>
+                {/* Image Placeholder */}
+                <div className="aspect-video bg-muted rounded-md my-2 flex items-center justify-center">
+                   <span className="text-sm text-muted-foreground">Bild Platzhalter</span>
                 </div>
-                <div className="p-4">
-                  <h2 className="text-xl font-semibold mb-2">{destination.name}</h2>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Entdecken Sie die atemberaubenden Strände von {destination.name}
-                  </p>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Details ansehen
-                  </Button>
-                </div>
-              </div>
-            </Link>
+                {/* Short Description Placeholder */}
+                <p className="text-sm text-muted-foreground mt-2">
+                  Erkunden Sie {destination.name} und seine einzigartigen Küsten.
+                </p>
+              </CardContent>
+              <CardFooter>
+                <Button asChild className="w-full">
+                  <Link href={`/destinations/${destination.slug}`}>Mehr erfahren</Link>
+                </Button>
+              </CardFooter>
+            </Card>
           ))}
         </div>
-        
+
+        {/* Removed the bottom button */}
+        {/*
         <div className="text-center">
           <Button>Alle Reiseziele entdecken</Button>
         </div>
-      </div>
+        */}
+      </section>
     </main>
   );
 } 

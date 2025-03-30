@@ -1,7 +1,11 @@
+import { getDestinationBySlug, destinations } from "@/lib/data";
+import type { Destination } from "@/lib/data";
+import { notFound } from 'next/navigation';
+import React from 'react';
 import { Button } from "@/components/ui/button";
-import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 
+// Define props type including params
 interface DestinationPageProps {
   params: {
     slug: string;
@@ -17,24 +21,27 @@ export function generateMetadata({ params }: DestinationPageProps): Metadata {
 }
 
 export default function DestinationPage({ params }: DestinationPageProps) {
-  const { slug } = params;
+  // Fetch data using the slug
+  const destination = getDestinationBySlug(params.slug);
 
-  // In einer realen Anwendung würden wir hier die Daten aus einer API oder Datendatei abrufen
-  // und prüfen, ob das Reiseziel existiert
-  // Wenn nicht, können wir die notFound() Funktion aufrufen
+  // Handle case where destination is not found
+  if (!destination) {
+    notFound(); // Trigger 404 page
+  }
 
+  // Render the destination details
   return (
-    <main className="container mx-auto py-12 px-4">
+    <main className="container mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
         <div className="mb-8">
           <Button variant="ghost" className="mb-4" onClick={() => window.history.back()}>
             &larr; Zurück
           </Button>
-          <h1 className="text-4xl font-bold mb-4 text-primary">{slug}</h1>
+          <h1 className="text-4xl font-bold mb-4 text-primary">{destination.name}</h1>
           <div className="h-64 bg-muted rounded-lg mb-6 overflow-hidden">
             {/* Hier würde ein Bild des Reiseziels angezeigt werden */}
             <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-              Bild von {slug}
+              Bild von {destination.name}
             </div>
           </div>
         </div>
@@ -44,7 +51,7 @@ export default function DestinationPage({ params }: DestinationPageProps) {
             <section>
               <h2 className="text-2xl font-semibold mb-4">Beschreibung</h2>
               <p className="text-foreground/80">
-                Detaillierte Beschreibung von {slug} mit Informationen über die Strände, 
+                Detaillierte Beschreibung von {destination.name} mit Informationen über die Strände, 
                 Aktivitäten und besondere Attraktionen.
               </p>
             </section>

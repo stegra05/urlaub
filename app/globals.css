@@ -97,11 +97,17 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-quicksand);
     @apply font-medium text-foreground;
   }
   
-  /* Sanfte Hover-Effekte für interaktive Elemente */
-  button, a {
+  /* Globale Stil-Defaults */
+  button {
+    @apply rounded-lg;
+    @apply transition-all duration-300;
+  }
+
+  a {
     @apply transition-all duration-300;
   }
   
@@ -117,4 +123,7 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-primary/70 rounded-full hover:bg-primary/90;
   }
-} 
+}
+
+/* Empfehlung: Für Karten explizit `rounded-lg` und `shadow-md` anwenden */
+/* Beispiel: className="bg-card rounded-lg shadow-md p-4" */ 
